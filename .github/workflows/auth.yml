@@ -42,3 +42,22 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      ### OCI Bucket Upload:
+
+      # Install OCI CLI
+      - name: Set up OCI CLI
+        run: pip install oci-cli
+
+      # Upload to Oracle Cloud Object Storage
+      - name: Upload dist to OCI
+        run: |
+          oci os object bulk-upload \
+            --bucket-name ${{ secrets.OCI_BUCKET_NAME }} \
+            --src-dir dist
+        env:
+          OCI_TENANCY: ${{ secrets.OCI_TENANCY }}
+          OCI_USER: ${{ secrets.OCI_USER }}
+          OCI_REGION: ${{ secrets.OCI_REGION }}
+          OCI_FINGERPRINT: ${{ secrets.OCI_FINGERPRINT }}
+          OCI_KEY_CONTENT: ${{ secrets.OCI_KEY_CONTENT }}
