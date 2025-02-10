@@ -6,7 +6,7 @@ This repository contains a Proof of Concept (PoC) demonstrating the implementati
 
 https://dgkjlb4bo3qfw.cloudfront.net/
 
-* Demonstration flow: root -> princing -> go back via App button -> login -> sign in (with credentials blank ) -> dashboard -> logout
+* Demonstration flow: root -> princing -> go back via App button -> login -> sign in (with blank credentials) -> dashboard -> logout
 
 ## Overview
 
@@ -23,7 +23,7 @@ This PoC explores the benefits and challenges of micro frontends by building a s
 
 * Each micro frontend has a function (look for mount function) that enables decoupling between MFE and container app (despite container also being written in react)
 
-* Some dark magic being done for the routing: since most navigation libraries uses some kind of history, we're creating it then passing down to each micro frontend as prop so everybody can keep up with route being changed among several MFE's.
+* Routing: most navigation libraries uses some kind of `history` object or equivalent, we're creating it then passing down to each micro frontend as prop so everybody can keep up with route being changed among several MFE's.
 
 * The rest is webpack's doing. All projects are wrapped and build by webpack and use Module Federation.
 
