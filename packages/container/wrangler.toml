@@ -1,0 +1,6 @@
+name = "container"
+type = "webpack"
+
+[site]
+bucket = "packages/container/dist"  # Caminho para a pasta de build
+entry-point = "workers-site"
